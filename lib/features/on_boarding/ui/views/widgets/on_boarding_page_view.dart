@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_images.dart';
+import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/features/on_boarding/ui/views/widgets/page_view_item.dart';
 
 class OnBoardingPageView extends StatelessWidget {
-  const OnBoardingPageView({super.key});
-
+  const OnBoardingPageView({super.key, required this.pageController});
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
     return PageView(
-      children: const [
+      controller: pageController,
+      children: [
         PageViewItem(
+          isVisibil: true,
           image: Assets.imagesPageViewItem1Image,
           backgroundImage: Assets.imagesPageViewItem1BackgroundImage,
           subtitle:
@@ -17,26 +21,39 @@ class OnBoardingPageView extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'مرحبًا بك في',
+                style: TextStyles.bold23,
               ),
-              Text(' HUB'),
-              Text('Fruit')
+              Text(
+                '  HUB',
+                style: TextStyles.bold23.copyWith(
+                  color: AppColors.secondaryColor,
+                ),
+              ),
+              Text(
+                'Fruit',
+                style: TextStyles.bold23.copyWith(
+                  color: AppColors.primaryColor,
+                ),
+              ),
             ],
           ),
         ),
-        PageViewItem(
+        const PageViewItem(
           image: Assets.imagesPageViewItem2Image,
           backgroundImage: Assets.imagesPageViewItem2BackgroundImage,
           subtitle:
               'نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية',
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'ابحث و تسوق',
-              ),
-            ],
+          title: Text(
+            'ابحث وتسوق',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Color(0xFF0C0D0D),
+              fontSize: 23,
+              fontWeight: FontWeight.w700,
+              height: 0,
+            ),
           ),
         ),
       ],
