@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fruits_hub/features/auth/ui/views/login_view.dart';
+import 'package:fruits_hub/features/auth/ui/views/signin_view.dart';
 import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/services/shared_prefrences_singleton.dart';
 import 'package:fruits_hub/core/utils/app_images.dart';
@@ -27,7 +27,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       () {
         if (mounted) {
           if (isSeen) {
-            Navigator.pushReplacementNamed(context, LoginView.routeName);
+            Navigator.pushReplacementNamed(context, SigninView.routeName);
           } else {
             Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
           }

@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:fruits_hub/features/auth/ui/views/login_view.dart';
+import 'package:fruits_hub/features/auth/ui/views/signin_view.dart';
 import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/services/shared_prefrences_singleton.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
@@ -68,7 +68,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 onPressed: () {
                   Prefs.setBool(kIsOnBoardingViewSeen, true);
                   Navigator.of(context).pushReplacementNamed(
-                    LoginView.routeName,
+                    SigninView.routeName,
                   );
                 },
                 text: 'ابدأ الآن',
