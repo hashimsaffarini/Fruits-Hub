@@ -91,7 +91,9 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 height: 16,
               ),
               SocialLoginButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read<SigninCubit>().sigininWithApple();
+                },
                 title: 'تسجيل الدخول بواسطة أبل',
                 image: Assets.imagesApplIcon,
               ),
@@ -99,7 +101,9 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 height: 16,
               ),
               SocialLoginButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read<SigninCubit>().signinWithFacebook();
+                },
                 title: 'تسجيل الدخول بواسطة فيسبوك',
                 image: Assets.imagesFacebookIcon,
               ),
