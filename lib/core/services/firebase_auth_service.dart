@@ -27,6 +27,9 @@ class FirebaseAuthService {
       } else if (e.code == 'email-already-in-use') {
         throw CustomException(
             message: 'لقد قمت بالتسجيل مسبقاً. الرجاء تسجيل الدخول.');
+      } else if (e.code == 'invalid-credential') {
+        throw CustomException(
+            message: 'الرقم السري او البريد الالكتروني غير صحيح.');
       } else if (e.code == 'network-request-failed') {
         throw CustomException(message: 'تاكد من اتصالك بالانترنت.');
       } else {
