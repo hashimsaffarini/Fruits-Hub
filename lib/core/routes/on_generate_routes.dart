@@ -6,6 +6,7 @@ import 'package:fruits_hub/features/auth/ui/logic/signin/signin_cubit.dart';
 import 'package:fruits_hub/features/auth/ui/logic/signup/signup_cubit.dart';
 import 'package:fruits_hub/features/auth/ui/views/signin_view.dart';
 import 'package:fruits_hub/features/auth/ui/views/signup_view.dart';
+import 'package:fruits_hub/features/home/ui/views/home_view.dart';
 import 'package:fruits_hub/features/on_boarding/ui/views/on_boarding_view.dart';
 import 'package:fruits_hub/features/splash/ui/views/splash_view.dart';
 
@@ -32,6 +33,11 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
           create: (context) => SignupCubit(getIt<AuthRepo>()),
           child: const SignupView(),
         ),
+      );
+
+    case HomeView.routeName:
+      return MaterialPageRoute(
+        builder: (_) => const HomeView(),
       );
     default:
       return MaterialPageRoute(
