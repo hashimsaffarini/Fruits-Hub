@@ -53,7 +53,8 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return right(UserModel.fromFirebaseUser(user));
+      var userEntity = await getUserData(uid: user.uid);
+      return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
@@ -67,7 +68,15 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await firebaseAuthService.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      bool isUserExist = await databaseService.checkIfDataExists(
+        path: BackendEndpoint.isUserExists,
+        docuementId: userEntity.uId,
+      );
+      if (isUserExist) {
+        await getUserData(uid: user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
 
       return right(UserModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
@@ -119,11 +128,21 @@ class AuthRepoImpl extends AuthRepo {
       await databaseService.addData(
         path: BackendEndpoint.addUserData,
         data: user.toMap(),
+        docuementId: user.uId,
       );
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
       return left(ServerFailure('حدث خطأ ما.'));
     }
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uid}) async {
+    var userData = await databaseService.getData(
+      path: BackendEndpoint.getUsersData,
+      docuementId: uid,
+    );
+    return UserModel.fromMap(userData);
   }
 }
