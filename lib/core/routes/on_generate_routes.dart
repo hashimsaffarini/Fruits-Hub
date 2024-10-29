@@ -6,6 +6,7 @@ import 'package:fruits_hub/features/auth/ui/logic/signin/signin_cubit.dart';
 import 'package:fruits_hub/features/auth/ui/logic/signup/signup_cubit.dart';
 import 'package:fruits_hub/features/auth/ui/views/signin_view.dart';
 import 'package:fruits_hub/features/auth/ui/views/signup_view.dart';
+import 'package:fruits_hub/features/best_selling_fruits/ui/views/best_selling_view.dart';
 import 'package:fruits_hub/features/home/ui/views/home_view.dart';
 import 'package:fruits_hub/features/on_boarding/ui/views/on_boarding_view.dart';
 import 'package:fruits_hub/features/splash/ui/views/splash_view.dart';
@@ -38,6 +39,10 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     case HomeView.routeName:
       return MaterialPageRoute(
         builder: (_) => const HomeView(),
+      );
+    case BestSellingView.routeName:
+      return MaterialPageRoute(
+        builder: (_) => const BestSellingView(),
       );
     default:
       return MaterialPageRoute(

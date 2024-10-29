@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
+import 'package:fruits_hub/features/best_selling_fruits/ui/views/best_selling_view.dart';
 
 class BestSellingHeader extends StatelessWidget {
   const BestSellingHeader({super.key});
@@ -7,7 +8,9 @@ class BestSellingHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, BestSellingView.routeName);
+      },
       child: Row(
         children: [
           const Text(
